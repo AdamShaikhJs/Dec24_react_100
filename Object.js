@@ -43,9 +43,9 @@ const arr5 = [{name: 'Alice'}, {name: 'Bob'}, {name: 'Alice'}];
 console.log(countUniqueProperties(arr5, 'name')); // Output: {Alice: 2, Bob: 1}
 
 // 6. Group Objects by Property
-const groupByProperty = (arr, key) => {
+const groupByProperty = (arr, key="type") => {
   return arr.reduce((acc, obj) => {
-    const group = obj[key];
+    const group = obj['type'];
     if (!acc[group]) {
       acc[group] = [];
     }
@@ -73,8 +73,6 @@ console.log(removeDuplicates(arr7, 'id')); // Output: [{id: 1, name: 'Alice'}, {
 
 
 // 9. Deep Clone an Object
-
-
 const deepClone = (obj) => {
   return JSON.parse(JSON.stringify(obj));
 };
@@ -159,3 +157,27 @@ const deepEqual = (obj1, obj2) => {
 const obj1 = {a: 1, b: {c: 2}};
 const obj2 = {a: 1, b: {c: 2}};
 console.log(deepEqual(obj1, obj2)); // Output: true
+
+
+
+//16 How can you check if an object is empty?
+function isEmpty(obj) {
+  return JSON.stringify(obj) === "{}";
+  // return Object.keys(obj).length === 0;
+
+}
+console.log(isEmpty({}));  // Output: true
+console.log(isEmpty({ name: "Alice" }));  // Output: false
+
+
+
+// 17 common between this array
+const input1 = { a: 1, b: 2, c: 3, d: 10, e: 12, f: 6 };
+const input2 = { a: 5, b: 7, e: 12, d: 10 };
+
+const commonEntries = Object.entries(input1).filter(
+  ([key, value]) => input2[key] === value
+);
+const result = Object.fromEntries(commonEntries);
+
+console.log(result); // Output: { d: 10, e: 12 }
