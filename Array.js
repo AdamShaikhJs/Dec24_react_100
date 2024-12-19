@@ -235,3 +235,38 @@ function rearrangeArray(arr, index) {
   return result;
 }
 console.log( rearrangeArray([50, 40, 70, 60, 90], [3, 0, 4, 1, 2])); // Output: [40, 60, 90, 50, 70]
+
+
+
+
+
+
+
+//Otp generate 
+function generateAlphanumericOTP(length = 6) {
+  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let otp = '';
+  for (let i = 0; i < length; i++) {
+      otp += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return otp;
+}
+console.log(generateAlphanumericOTP())
+
+function generateOTP(length = 6) {
+  let otp = '';
+  for (let i = 0; i < length; i++) {
+      otp += Math.floor(Math.random() * 10); // Generate a random digit (0-9)
+  }
+  return otp;
+}
+
+// Example usage
+const otp = generateOTP();
+console.log("Generated OTP:", otp);
+
+
+const generateOTP2 = (length = 6) => Array.from({ length }, () => Math.floor(Math.random() * 10)).join('');
+// Example usage
+const otp2 = generateOTP2();
+console.log("Generated OTP:", otp2);
